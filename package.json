@@ -1,7 +1,7 @@
 {
-  "name": "untitled",
+  "name": "Trivo",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "parcel-bundler": "^1.6.1"
   },
