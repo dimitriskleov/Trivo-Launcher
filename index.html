@@ -1,109 +1,795 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <!-- Site made with Mobirise Website Builder v4.7.8, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v4.7.8, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/trivo-122x122.png" type="image/x-icon">
-  <meta name="description" content="Web Site Generator Description">
-  <title>Home</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
+<html><head><base href="." />
+<meta charset="UTF-8">
+<title>TRIVO STYLER Launcher - Download</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #1a1a1a;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.logo {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #000000, #333333, #4CAF50);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 5s ease infinite;
+}
+
+.download-box {
+    background: linear-gradient(145deg, #222, #333);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transform-style: preserve-3d;
+    animation: floatBox 3s ease-in-out infinite;
+}
+
+.download-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.download-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.premium-features {
+    margin: 3rem 0;
+}
+
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.premium-card {
+    background: linear-gradient(145deg, #222, #2a2a2a);
+    padding: 2rem;
+    border-radius: 15px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+}
+
+.premium-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #4CAF50;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.tutorial-section {
+    margin: 3rem 0;
+}
+
+.tutorial-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.step {
+    background: linear-gradient(145deg, #222, #2a2a2a);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.system-requirements {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #333, #444);
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.social-button:hover {
+    transform: translateY(-3px);
+}
+
+.changelog {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.changelog-item {
+    border-left: 3px solid #4CAF50;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: rgba(255,255,255,0.02);
+}
+
+.faq-section {
+    margin: 2rem 0;
+}
+
+.faq-item {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    margin: 1rem 0;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.faq-item:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.faq-answer {
+    display: none;
+    padding: 1rem 0;
+    color: #aaa;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes floatBox {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.comments-section {
+    margin: 2rem 0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.add-comment {
+    margin-bottom: 2rem;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #fff;
+}
+
+textarea.comment-input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.comment-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.comment-button:hover {
+    background: #2E7D32;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment {
+    background: #2a2a2a;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid #4CAF50;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.commenter-name {
+    font-weight: bold;
+}
+
+.comment-stars {
+    color: #4CAF50;
+}
+
+.rating-input {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.star-rating {
+    display: inline-flex;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.star.active {
+    color: #4CAF50;
+}
+
+.average-rating {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.average-rating .rating {
+    color: #4CAF50;
+    font-size: 1.5rem;
+}
+
+#averageRating {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#totalReviews {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Add styles for delete button */
+.delete-comment {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+}
+
+.delete-comment:hover {
+    background: #cc0000;
+}
+</style>
 </head>
 <body>
-  <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-h">
 
-    
+<div class="particles" id="particles"></div>
 
-    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-toggleable-sm">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
-        <div class="menu-logo">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="page1.html">
-                         <img src="assets/images/trivo-122x122.png" alt="Trivo" title="" style="height: 4.8rem;">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="page1.html">Trivo</a></span>
-            </div>
+<div class="container">
+    <h1 class="logo">TRIVO STYLER</h1>
+
+    <div class="download-box">
+        <h2>Download TRIVO STYLER Launcher</h2>
+        <div class="average-rating">
+            <div id="averageStars" class="rating"></div>
+            <span id="averageRating"></span>
+            <span id="totalReviews"></span>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="https://mobirise.com">
-                        </a>
-                </li></ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="https://raw.githubusercontent.com/dimitriskleov/Trivo-Launcher/Trivo/Trivo-Installer(Admin).exe">Download</a></div>
-        </div>
-    </nav>
-</section>
-
-<section class="engine"><a href="https://mobirise.me/e">how to make a site for free</a></section><section once="" class="cid-uqClhtbo3t" id="footer6-i">
-
-    
-
-    
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    © Copyright 2024 Tirvo - All Rights Reserved
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="header5 cid-uqNBuFVEK8 mbr-fullscreen" id="header5-j">
-
-    
-
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title align-center pb-3 mbr-fonts-style display-1">Welcome to Trivo</h1>
-                <p class="mbr-text align-center display-5 pb-3 mbr-fonts-style"></p>
-                <div class="mbr-section-btn align-center"><a class="btn btn-md btn-secondary-outline display-4" href="Download">Download</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-        <a href="#next">
-            <i class="mbri-down mbr-iconfont"></i>
+        <p>Experience gaming with style - Black, Gray, and Green Edition</p>
+        <a href="https://example.com/download/trivo-styler" class="download-button">
+            DOWNLOAD NOW
         </a>
+        <p>Version 1.0.0 | 50MB</p>
     </div>
-</section>
 
+    <div class="features">
+        <div class="feature-card">
+            <h3>Sleek Design</h3>
+            <p>Modern interface with customizable themes</p>
+        </div>
+        <div class="feature-card" style="animation-delay: 0.2s">
+            <h3>Fast Loading</h3>
+            <p>Optimized performance for smooth experience</p>
+        </div>
+        <div class="feature-card" style="animation-delay: 0.4s">
+            <h3>Game Integration</h3>
+            <p>Seamless connection with your favorite games</p>
+        </div>
+    </div>
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  
-  
-</body>
-</html>
+    <div class="premium-features">
+        <h2>Premium Features</h2>
+        <div class="premium-grid">
+            <div class="premium-card">
+                <h3>Custom Themes</h3>
+                <p>Create and share your own themes</p>
+                <div class="premium-badge">PRO</div>
+            </div>
+            <div class="premium-card">
+                <h3>Cloud Sync</h3>
+                <p>Sync your settings across devices</p>
+                <div class="premium-badge">PRO</div>
+            </div>
+            <div class="premium-card">
+                <h3>Priority Support</h3>
+                <p>24/7 dedicated support team</p>
+                <div class="premium-badge">PRO</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tutorial-section">
+        <h2>Quick Start Guide</h2>
+        <div class="tutorial-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Download</h3>
+                <p>Get the latest version of TRIVO STYLER</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Install</h3>
+                <p>Run the installer and follow instructions</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Configure</h3>
+                <p>Set up your preferences and themes</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Play</h3>
+                <p>Launch your games and enjoy!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="system-requirements">
+        <h2>System Requirements</h2>
+        <div class="requirements-grid">
+            <div>
+                <h3>Minimum</h3>
+                <ul>
+                    <li>OS: Windows 7/8/10</li>
+                    <li>CPU: Intel Core i3</li>
+                    <li>RAM: 4GB</li>
+                    <li>Storage: 100MB</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Recommended</h3>
+                <ul>
+                    <li>OS: Windows 10/11</li>
+                    <li>CPU: Intel Core i5</li>
+                    <li>RAM: 8GB</li>
+                    <li>Storage: 500MB</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://discord.gg/trivo-styler" class="social-button">Join Discord</a>
+        <a href="https://twitter.com/trivo-styler" class="social-button">Follow Twitter</a>
+        <a href="https://github.com/trivo-styler" class="social-button">GitHub</a>
+    </div>
+
+    <div class="changelog">
+        <h2>Changelog</h2>
+        <div class="changelog-item">
+            <h3>Version 1.0.0 (Latest)</h3>
+            <ul>
+                <li>Initial release of TRIVO STYLER</li>
+                <li>Custom theme engine implementation</li>
+                <li>Game integration system</li>
+            </ul>
+        </div>
+        <div class="changelog-item">
+            <h3>Beta 0.9.5</h3>
+            <ul>
+                <li>Performance optimizations</li>
+                <li>UI improvements</li>
+                <li>Bug fixes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="comments-section">
+        <h2>User Comments</h2>
+        <div class="add-comment">
+            <input type="text" id="commenterName" placeholder="Your Name" class="comment-input">
+            <div class="rating-input">
+                <span>Rating:</span>
+                <div class="star-rating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                </div>
+            </div>
+            <textarea id="commentText" placeholder="Write your comment here..." class="comment-input"></textarea>
+            <button onclick="addComment()" class="comment-button">Add Comment</button>
+        </div>
+        <div id="commentsList" class="comments-list">
+            <!-- Comments will be displayed here -->
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>How do I install TRIVO STYLER?</h3>
+            <div class="faq-answer">
+                Simply download the installer, run it, and follow the on-screen instructions. The process takes less than 2 minutes.
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>Is TRIVO STYLER free?</h3>
+            <div class="faq-answer">
+                Yes, TRIVO STYLER is completely free to download and use.
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3>How do I customize themes?</h3>
+            <div class="faq-answer">
+                You Cant.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Particle animation
+class Particle {
+    constructor() {
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * window.innerHeight;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = `rgba(${Math.random() * 50 + 20}, ${Math.random() * 150 + 105}, ${Math.random() * 50 + 20}, 0.5)`;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > window.innerWidth || this.x < 0) this.speedX *= -1;
+        if (this.y > window.innerHeight || this.y < 0) this.speedY *= -1;
+    }
+
+    draw(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+const canvas = document.createElement('canvas');
+canvas.classList.add('particles');
+document.body.appendChild(canvas);
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const particles = Array.from({ length: 50 }, () => new Particle());
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw(ctx);
+    });
+    
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+// Trigger feature card animations on scroll
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.feature-card').forEach(card => {
+    observer.observe(card);
+});
+
+// Add FAQ functionality
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const wasActive = item.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(faqItem => {
+            faqItem.classList.remove('active');
+        });
+        
+        // Toggle clicked item
+        if (!wasActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// Add hover animation for premium cards
+document.querySelectorAll('.premium-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.querySelector('.premium-badge').style.transform = 'scale(1.1)';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.querySelector('.premium-badge').style.transform = 'scale(1)';
+    });
+});
+
+let selectedRating = 0;
+
+// Initialize comment system
+async function initCommentSystem() {
+    // Initialize comments array in localStorage if it doesn't exist
+    if (!localStorage.getItem('comments')) {
+        localStorage.setItem('comments', JSON.stringify([]));
+    }
+    loadComments();
+    setInterval(loadComments, 1000); // Keep polling for UI consistency
+}
+
+async function loadComments() {
+    const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+    const commentsList = document.getElementById('commentsList');
+    commentsList.innerHTML = '';
+    
+    comments.forEach(comment => {
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
+        
+        // Generate delete button only if this comment has matching device ID
+        const deleteButton = comment.deviceId === getDeviceId() ? 
+            `<button class="delete-comment" onclick="deleteComment('${comment.id}')">Delete</button>` : '';
+        
+        commentElement.innerHTML = `
+            <div class="comment-header">
+                <span class="commenter-name">${escapeHtml(comment.name)}</span>
+                <span class="comment-stars">${'★'.repeat(comment.rating)}${'☆'.repeat(5-comment.rating)}</span>
+                ${deleteButton}
+            </div>
+            <div class="comment-text">${escapeHtml(comment.comment)}</div>
+        `;
+        commentsList.appendChild(commentElement);
+    });
+
+    await updateAverageRating();
+}
+
+async function addComment() {
+    const name = document.getElementById('commenterName').value.trim();
+    const comment = document.getElementById('commentText').value.trim();
+    
+    if (!name || !comment || selectedRating === 0) {
+        alert('Please fill in all fields and select a rating');
+        return;
+    }
+    
+    const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+    
+    const newComment = {
+        id: Date.now().toString(), // Unique ID based on timestamp
+        name: name,
+        comment: comment,
+        rating: selectedRating,
+        timestamp: new Date().toISOString(),
+        deviceId: getDeviceId() // Store device ID with comment
+    };
+    
+    comments.push(newComment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    
+    document.getElementById('commenterName').value = '';
+    document.getElementById('commentText').value = '';
+    selectedRating = 0;
+    updateStarDisplay();
+
+    await updateAverageRating();
+}
+
+// Function to generate/get device ID
+function getDeviceId() {
+    let deviceId = localStorage.getItem('deviceId');
+    if (!deviceId) {
+        deviceId = 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('deviceId', deviceId);
+    }
+    return deviceId;
+}
+
+// Function to delete comment
+function deleteComment(commentId) {
+    const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+    const commentIndex = comments.findIndex(c => c.id === commentId && c.deviceId === getDeviceId());
+    
+    if (commentIndex !== -1) {
+        comments.splice(commentIndex, 1);
+        localStorage.setItem('comments', JSON.stringify(comments));
+        loadComments();
+    }
+}
+
+// Update average rating calculation to use localStorage
+async function updateAverageRating() {
+    const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+    const totalReviews = comments.length;
+    const avgRating = comments.reduce((acc, curr) => acc + curr.rating, 0) / totalReviews || 0;
+    const roundedRating = Math.round(avgRating * 10) / 10;
+    
+    document.getElementById('averageStars').innerHTML = '★'.repeat(Math.round(avgRating)) + '☆'.repeat(5 - Math.round(avgRating));
+    document.getElementById('averageRating').textContent = `${roundedRating.toFixed(1)} / 5.0`;
+    document.getElementById('totalReviews').textContent = `(${totalReviews} reviews)`;
+}
+
+// Star rating functionality
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', (e) => {
+        selectedRating = parseInt(e.target.dataset.rating);
+        updateStarDisplay();
+    });
+});
+
+function updateStarDisplay() {
+    document.querySelectorAll('.star').forEach(star => {
+        const rating = parseInt(star.dataset.rating);
+        star.classList.toggle('active', rating <= selectedRating);
+    });
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+// Initialize the comment system when the page loads
+initCommentSystem();
+</script>
+
+</body></html>
