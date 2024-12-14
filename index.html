@@ -219,6 +219,82 @@ body {
     display: block;
 }
 
+.settings-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.settings-button {
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+}
+
+.settings-button:hover {
+    transform: translateY(-3px);
+}
+
+.settings-icon {
+    margin-right: 8px;
+}
+
+.settings-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-modal-content {
+    background: linear-gradient(145deg, #222, #333);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.settings-options {
+    margin: 2rem 0;
+}
+
+.clear-data-button {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.clear-data-button:hover {
+    background: #cc0000;
+}
+
+.close-settings-button {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -249,6 +325,103 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: -1;
+}
+
+.discord-widget {
+    background: linear-gradient(145deg, #2C2F33, #23272A);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: #fff;
+}
+
+.discord-content {
+    margin-top: 1rem;
+}
+
+.server-info {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.server-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.server-info p {
+    color: #72767d;
+    font-size: 1.1rem;
+}
+
+.members-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.member-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s ease;
+}
+
+.member-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.member-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-online {
+    background: #43b581;
+}
+
+.status-idle {
+    background: #faa61a;
+}
+
+.status-dnd {
+    background: #f04747;
+}
+
+.join-button {
+    display: inline-block;
+    background: #7289DA;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.join-button:hover {
+    background: #5b6eae;
+}
+
+.loading {
+    text-align: center;
+    padding: 1rem;
+    color: #72767d;
+}
+
+.error-message {
+    color: #f04747;
+    text-align: center;
+    padding: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -352,6 +525,12 @@ body {
         <a href="https://github.com/trivo-" class="social-button">GitHub</a>
     </div>
 
+    <div class="settings-section">
+        <button id="settingsBtn" class="settings-button">
+            <span class="settings-icon">⚙️</span> Settings
+        </button>
+    </div>
+
     <div class="changelog">
         <h2>Changelog</h2>
         <div class="changelog-item">
@@ -385,6 +564,29 @@ body {
                 Yes, TRIVO  is completely free to download and use.
             </div>
         </div>
+    </div>
+
+    <div class="discord-widget">
+        <h2>Discord Community</h2>
+        <div class="discord-content">
+            <div id="serverInfo" class="server-info">
+                <div class="loading">Loading server information...</div>
+            </div>
+            <div id="membersList" class="members-list"></div>
+            <a id="joinButton" href="#" target="_blank" class="join-button">Join Server</a>
+        </div>
+    </div>
+</div>
+
+<div id="settingsModal" class="settings-modal">
+    <div class="settings-modal-content">
+        <h2>Settings</h2>
+        <div class="settings-options">
+            <button id="clearDataBtn" class="clear-data-button">
+                Clear Site Data
+            </button>
+        </div>
+        <button id="closeSettingsBtn" class="close-settings-button">Close</button>
     </div>
 </div>
 
@@ -476,6 +678,225 @@ document.querySelectorAll('.faq-item').forEach(item => {
         }
     });
 });
+
+// Function to check if it's first visit
+function isFirstVisit() {
+  return !localStorage.getItem('hasVisited');
+}
+
+// Function to create and show the ads popup
+function showAdsPopup() {
+  const popup = document.createElement('div');
+  popup.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(145deg, #222, #333);
+    padding: 2rem;
+    border-radius: 15px;
+    z-index: 1000;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  `;
+
+  const overlay = document.createElement('div');
+  overlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 999;
+  `;
+
+  popup.innerHTML = `
+    <h2 style="margin-bottom: 1rem; color: white;">Welcome to TRIVO!</h2>
+    <p style="margin-bottom: 2rem; color: #ccc;">Would you like to enable ads to support TRIVO?</p>
+    <button id="enableAds" style="
+      background: linear-gradient(45deg, #4CAF50, #2E7D32);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0.5rem;
+      font-weight: bold;
+    ">Enable Ads</button>
+    <button id="disableAds" style="
+      background: #444;
+      color: #999;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      cursor: not-allowed;
+      margin: 0.5rem;
+      opacity: 0.5;
+    " disabled>Disable Ads (5)</button>
+  `;
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(popup);
+
+  const enableBtn = document.getElementById('enableAds');
+  const disableBtn = document.getElementById('disableAds');
+  
+  // Enable button handler
+  enableBtn.addEventListener('click', () => {
+    localStorage.setItem('adsEnabled', 'true');
+    localStorage.setItem('hasVisited', 'true');
+    popup.remove();
+    overlay.remove();
+    showAd(); // Show first ad immediately
+    startAdInterval(); // Start the interval
+  });
+
+  // Disable button countdown and handler
+  let seconds = 5;
+  const countdownInterval = setInterval(() => {
+    seconds--;
+    disableBtn.textContent = `Disable Ads (${seconds})`;
+    
+    if (seconds === 0) {
+      clearInterval(countdownInterval);
+      disableBtn.textContent = 'Disable Ads';
+      disableBtn.style.opacity = '1';
+      disableBtn.style.cursor = 'pointer';
+      disableBtn.style.background = '#666';
+      disableBtn.style.color = 'white';
+      disableBtn.disabled = false;
+    }
+  }, 1000);
+
+  // Disable button handler (after countdown)
+  disableBtn.addEventListener('click', () => {
+    localStorage.setItem('adsEnabled', 'false');
+    localStorage.setItem('hasVisited', 'true');
+    popup.remove();
+    overlay.remove();
+  });
+}
+
+// Function to show the ad
+function showAd() {
+    // Remove any existing ad script
+    const existingAd = document.getElementById('pertaweeAd');
+    if (existingAd) {
+        existingAd.remove();
+    }
+    
+    // Create and append new ad script
+    const adScript = document.createElement('script');
+    adScript.id = 'pertaweeAd';
+    adScript.src = 'https://pertawee.net/act/files/tag.min.js?z=8649894';
+    adScript.setAttribute('data-cfasync', 'false');
+    adScript.async = true;
+    document.body.appendChild(adScript);
+}
+
+// Function to start the ad interval
+function startAdInterval() {
+    setInterval(() => {
+        if (localStorage.getItem('adsEnabled') === 'true') {
+            showAd();
+        }
+    }, 30000); // Changed to 30 seconds (30000 milliseconds)
+}
+
+// Check if it's first visit and show popup
+if (isFirstVisit()) {
+  showAdsPopup();
+}
+
+if (localStorage.getItem('adsEnabled') === 'true') {
+    showAd(); // Show initial ad
+    startAdInterval(); // Start interval
+}
+
+// Settings functionality
+const settingsBtn = document.getElementById('settingsBtn');
+const settingsModal = document.getElementById('settingsModal');
+const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+const clearDataBtn = document.getElementById('clearDataBtn');
+
+settingsBtn.addEventListener('click', () => {
+    settingsModal.style.display = 'flex';
+});
+
+closeSettingsBtn.addEventListener('click', () => {
+    settingsModal.style.display = 'none';
+});
+
+clearDataBtn.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all site data? This will reset all settings and preferences.')) {
+        localStorage.clear();
+        alert('Site data cleared successfully. The page will now reload.');
+        window.location.reload();
+    }
+});
+
+// Close modal when clicking outside
+settingsModal.addEventListener('click', (e) => {
+    if (e.target === settingsModal) {
+        settingsModal.style.display = 'none';
+    }
+});
+
+// Discord Widget Integration
+async function fetchDiscordData() {
+    try {
+        const response = await fetch('https://discord.com/api/guilds/1282662995901812748/widget.json');
+        if (!response.ok) throw new Error('Failed to fetch Discord data');
+        const data = await response.json();
+        
+        const serverInfo = document.getElementById('serverInfo');
+        const membersList = document.getElementById('membersList');
+        const joinButton = document.getElementById('joinButton');
+        
+        // Update server info with total member count and server name
+        serverInfo.innerHTML = `
+            <h3>${data.name}</h3>
+            <p>Total Members Online: ${data.presence_count}</p>
+        `;
+        
+        // Update members list with full usernames
+        membersList.innerHTML = '';
+        data.members.forEach(member => {
+            const statusClass = member.status === 'online' ? 'online' : 
+                              member.status === 'idle' ? 'idle' : 'dnd';
+            
+            const memberCard = document.createElement('div');
+            memberCard.className = 'member-card';
+            memberCard.innerHTML = `
+                <span class="member-status status-${statusClass}"></span>
+                <span>${member.username}</span>
+                ${member.game ? `<span style="color: #72767d; margin-left: 8px;">Playing: ${member.game.name}</span>` : ''}
+            `;
+            membersList.appendChild(memberCard);
+        });
+        
+        // Update join button
+        if (data.instant_invite) {
+            joinButton.href = data.instant_invite;
+        } else {
+            joinButton.style.display = 'none';
+        }
+        
+    } catch (error) {
+        console.error('Error fetching Discord data:', error);
+        document.getElementById('serverInfo').innerHTML = `
+            <div class="error-message">
+                Unable to load Discord server information. Please try again later.
+            </div>
+        `;
+    }
+}
+
+// Fetch Discord data initially and refresh every 60 seconds
+fetchDiscordData();
+setInterval(fetchDiscordData, 60000);
 </script>
 
 </body></html>
