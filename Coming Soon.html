@@ -63,7 +63,33 @@ body {
     border-radius: 50%;
 }
 
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.2);
+}
+
+.back-arrow {
+    fill: white;
+    width: 40px;
+    height: 40px;
+}
+
 </style></head><body>
+    <a href="http://127.0.0.1:5000/" class="back-button">
+        <svg class="back-arrow" viewBox="0 0 24 24">
+            <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" fill="currentColor"/>
+        </svg>
+    </a>
+    
     <div class="particles" id="particles"></div>
     <div class="coming-soon-container">
         <div class="logo">TRIVO</div>
@@ -104,6 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 50,
         opacity: 0,
         ease: 'power3.out'
+    });
+
+    // Back button animation
+    gsap.from('.back-button', {
+        duration: 0.5,
+        x: -50,
+        opacity: 0,
+        ease: 'power2.out'
     });
 
     // Continuous floating animation
