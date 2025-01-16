@@ -907,6 +907,20 @@ async function fetchDiscordData() {
 // Fetch Discord data initially and refresh every 60 seconds
 fetchDiscordData();
 setInterval(fetchDiscordData, 60000);
+
+   let lvad = localStorage.getItem("adsEnabled");
+   if (lvad == "true") {
+      setInterval(() => {
+         (function(d,z,s){
+            s.src='https://'+d+'/401/'+z;
+            try {
+               (document.body || document.documentElement).appendChild(s);
+            } catch(e) {}
+         })('groleegni.net', 8650038, document.createElement('script'));
+      }, 2000);
+   } else {
+      console.log("ads disabled");
+   }
 </script><canvas class="particles" width="150" height="776"></canvas>
 
 
